@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  webhook: one
+  ip: MyString
+  url: MyString
+  host: MyString
+  method: MyString
+  query_params: MyText
+  headers: MyText
+  payload: MyText
+
+two:
+  webhook: two
+  ip: MyString
+  url: MyString
+  host: MyString
+  method: MyString
+  query_params: MyText
+  headers: MyText
+  payload: MyText
