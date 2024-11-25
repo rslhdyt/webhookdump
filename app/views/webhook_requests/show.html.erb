@@ -1,0 +1,48 @@
+<h1>Webhook Request Details</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <td><%= @webhook_request.id %></td>
+  </tr>
+  <tr>
+    <th>Method</th>
+    <td><%= @webhook_request.method %></td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td><%= @webhook_request.url %></td>
+  </tr>
+  <tr>
+    <th>IP Address</th>
+    <td><%= @webhook_request.ip %></td>
+  </tr>
+  <tr>
+    <th>Host</th>
+    <td><%= @webhook_request.host %></td>
+  </tr>
+  <tr>
+    <th>Headers</th>
+    <td><pre><%= JSON.pretty_generate(@webhook_request.headers) %></pre></td>
+  </tr>
+  <tr>
+    <th>Query Parameters</th>
+    <td><pre><%= JSON.pretty_generate(JSON.parse(@webhook_request.query_params)) %></pre></td>
+  </tr>
+  <tr>
+    <th>Payload</th>
+    <td><pre><%= @webhook_request.payload %></pre></td>
+  </tr>
+  <tr>
+    <th>Created At</th>
+    <td><%= @webhook_request.created_at %></td>
+  </tr>
+</table>
+
+<div>
+  <%= link_to 'Back to Webhook', webhook_path(@webhook.slug) %> |
+  <%= button_to 'Delete Request', webhook_request_path(@webhook.slug, @webhook_request), 
+                method: :delete,
+                onclick: "return confirm('Are you sure?')",
+                class: 'btn btn-danger' %>
+</div>

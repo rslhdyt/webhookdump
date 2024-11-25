@@ -1,0 +1,44 @@
+<h1>Webhook Details</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <td><%= @webhook.id %></td>
+  </tr>
+  <tr>
+    <th>Slug</th>
+    <td><%= @webhook.slug %></td>
+  </tr>
+  <tr>
+    <th>Created At</th>
+    <td><%= @webhook.created_at %></td>
+  </tr>
+  <tr>
+    <th>Updated At</th>
+    <td><%= @webhook.updated_at %></td>
+  </tr>
+</table>
+
+<h2>Webhook Requests</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Method</th>
+            <th>URL</th>
+            <th>IP</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @webhook_requests.each do |webhook_request| %>
+            <tr>
+                <td><%= link_to webhook_request.id, webhook_request_path(@webhook.slug, webhook_request) %></td>
+                <td><%= webhook_request.method %></td>
+                <td><%= webhook_request.url %></td>
+                <td><%= webhook_request.ip %></td>
+                <td><%= webhook_request.created_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
