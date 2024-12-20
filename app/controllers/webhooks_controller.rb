@@ -9,7 +9,7 @@ class WebhooksController < ApplicationController
   end
 
   def handler
-    @webhook.webhook_requests.create(
+    webhook_request = @webhook.webhook_requests.create(
       url: request.url,
       ip: request.remote_ip,
       method: request.method,
@@ -17,6 +17,18 @@ class WebhooksController < ApplicationController
       headers: request_headers,
       query_params: request.query_parameters.to_json,
       payload: request.body.read
+    )
+
+    WebhookRequestChannel.broadcast_to(
+      @webhook.slug, 
+      {
+        id: webhook_request.id,
+        webhook_slug: @webhook.slug,
+        method: webhook_request.method,
+        url: webhook_request.url,
+        ip: webhook_request.ip,
+        created_at: webhook_request.created_at
+      }
     )
 
     render plain: 'Ok'
