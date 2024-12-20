@@ -20,7 +20,7 @@
 </table>
 
 <h2>Webhook Requests</h2>
-<table>
+<table data-controller="webhook-request" data-webhook-request-webhook-slug-value="<%= @webhook.slug %>" >
     <thead>
         <tr>
             <th>ID</th>
@@ -30,7 +30,7 @@
             <th>Created At</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="webhook-request-list">
         <% @webhook_requests.each do |webhook_request| %>
             <tr>
                 <td><%= link_to webhook_request.id, webhook_request_path(@webhook.slug, webhook_request) %></td>
